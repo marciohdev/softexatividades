@@ -1,0 +1,4 @@
+Analisando as linhas e colunas da figura 2, percebe-se que cada linha e cada coluna possui 4 alunos de determinada disciplina x 2 alunos da outra. 
+Quando ocorre a troca dos alunos, é possível que o professor, através do cruzamento dessas linhas e colunas consiga identificar quais alunos exatamente trocaram de lugar.
+Nesse caso, ao identificar a coluna que possui diferença, ele pode ir checando linha por linha e identificar que uma delas também possui diferença do padrão outrora identificado, 
+achando assim o ponto exato onde houve a troca. Literalmente como um cruzamento de plano cartesiano. 
