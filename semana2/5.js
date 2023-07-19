@@ -1,3 +1,11 @@
+/*
+Dada as seguintes entradas: 
+quilometragem inicial, quilometragem final, litros consumidos, preço do litro de combustível. 
+Faça um programa que imprima o seguinte Relatório: 
+distância percorrida, Valor total gasto e o 
+consumo do carro (quantos quilômetros percorre com 1 litro de combustível).
+
+*/
 let quilometragemInicial = parseFloat(prompt("Entre com a KM inicial: ")) 
 let quilometragemFinal = parseFloat(prompt("Entre com a KM final: "))
 let litrosConsumidos = parseInt(prompt("Entre com a quantidade de litros consumidos: ")) 
