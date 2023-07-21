@@ -4,18 +4,17 @@ var nota3 = parseFloat(prompt("Insira a nota 3 do aluno: "))
 var mediaAluno; 
 
 //LÓGICA QUE DESCOBRE QUAL A MENOR NOTA E CALCULA A MEDIA;
+var menorNota = nota1; //Aqui fazemos a variável menorNota receber NOTA1;
 
-if(nota1 < nota2 && nota1 < nota3){
-    mediaAluno = (nota2 + nota3) / 2
+if(menorNota > nota2){
+    menorNota = nota2;
 }
 
-if(nota2 < nota1 && nota2 < nota3){
-    mediaAluno = (nota1 + nota3) / 2
+if(menorNota > nota3){
+    menorNota = nota3;
 }
 
-if(nota3 < nota1 && nota3 < nota2){
-    mediaAluno = (nota1 + nota2) / 2
-}
+mediaAluno = (nota1 + nota2 + nota3 - menorNota) / 2;
 
 //LÓGICA QUE CLASSIFICA O ALUNO DE ACORDO COM A MÉDIA.
 if(mediaAluno < 3 ){
@@ -25,5 +24,3 @@ if(mediaAluno < 3 ){
 } else {
     alert("Aprovado direto")
 }
-
-
