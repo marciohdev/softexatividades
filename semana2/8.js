@@ -1,14 +1,31 @@
 var salario = parseFloat(prompt("Entre com o salário do colaborador: "))
 var percentualAplicado;
+var valorAumento;
+var novoSalario;
 
-if(salario >= 280){
-    salario += (salario * 0.2) //Aqui é o mesmo de dizer salario = salario + (salario * 0.1)
-} else if(salario > 280.01 && salario < 700){
-    salario += (salario * 0.15)
+if(salario <= 280){
+    percentualAplicado = 20;
+    valorAumento = (salario * 0.2) 
+    novoSalario = salario + valorAumento;
+
+} else if(salario > 280.00 && salario < 700){
+    percentualAplicado = 15;
+    valorAumento = (salario * percentualAplicado) / 100;
+    novoSalario = salario + valorAumento;
+
 } else if (salario >= 700 && salario < 1500){
-    salario += (salario * 0.1)
+
+    percentualAplicado = 10;
+    valorAumento = (salario * percentualAplicado) / 100;
+    novoSalario = salario + valorAumento;
+
 } else if(salario >= 1500){
-    salario += (salario * 0.05)
+
+    percentualAplicado = 5;
+    valorAumento = (salario * percentualAplicado) / 100;
+    novoSalario = salario + valorAumento;
 }
 
-alert(salario)
+alert("Percentual: " + percentualAplicado)
+alert("Valor do aumento " + valorAumento)
+alert("Valor do novo salário : " + novoSalario)
