@@ -26,3 +26,7 @@ alert("RELATÓRIO DA VIAGEM");
 alert("Distância Percorrida: " + distanciaPercorrida)
 alert("Valor total gasto: " + valorTotalGasto)
 alert("Consumo do veiculo por litro: " + consumoPorLitro)
+
+document.write("RELATÓRIO DA VIAGEM <br> Distancia Percorrida: " + distanciaPercorrida + 
+"<br> Valor total gasto: " + valorTotalGasto + 
+"<br> Consumo do Veículo por Litro: " + consumoPorLitro);
