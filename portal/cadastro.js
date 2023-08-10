@@ -10,4 +10,5 @@ let peso = parseFloat(prompt("Informe o peso: "))
 rendaBruta = parseFloat(prompt("Informe sua renda bruta: "))
 
 
-document.write(nome, endereco, cidade, cpf, rg, idade, nomeDoPai, nomeDaMae, peso, rendaBruta);
+document.write(nome + " " + endereco + " " + cidade + " " +  cpf + " " + rg + " " + idade + " " + nomeDoPai + " " + nomeDaMae + " " + 
+               peso + " " + rendaBruta);
