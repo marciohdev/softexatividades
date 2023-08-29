@@ -8,7 +8,6 @@ do {
     if (validacao == false) {
         alert("Entre com um ano válido")
     }
-
 } while (validacao == false) //Repita o do enquanto a funcao retornar false
 
 idadeAtual = 2023 - dataNasc;
