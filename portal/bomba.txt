@@ -8,8 +8,7 @@ function iniciarContador(duracao, display) {
 
     setInterval(function () { //Reebe uma função e um intervalo de tempo
 
-        segundos = parseInt(timer, 10); //O resto da divisão (mod) dos segundos totais por 60 vai ser a contagem dos segundos.
-
+        segundos = parseInt(timer, 10); //
         minutos = "00";
         segundos = segundos < 10 ? "0" + segundos : segundos;
 
@@ -18,7 +17,6 @@ function iniciarContador(duracao, display) {
         if (--timer < 0) {
             display.textContent = "A BOMBA EXPLODIU!!!"
         }
-
     }, 1000)
 }
 
