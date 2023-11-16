@@ -1,0 +1,39 @@
+// Definindo o objeto Banco
+const Banco = {
+  conta: 123456,
+  saldo: 1000,
+  tipoConta: 'Corrente',
+  agencia: '001',
+
+  // Método para buscar o saldo atual
+  buscarSaldo: function() {
+    return this.saldo;
+  },
+
+  // Método para realizar um depósito
+  deposito: function(valor) {
+    this.saldo += valor;
+    return `Depósito de R$${valor} realizado. Novo saldo: R$${this.saldo}`;
+  },
+
+  // Método para realizar um saque
+  saque: function(valor) {
+    if (valor > this.saldo) {
+      return 'Saldo insuficiente para saque.';
+    } else {
+      this.saldo -= valor;
+      return `Saque de R$${valor} realizado. Novo saldo: R$${this.saldo}`;
+    }
+  },
+
+  // Método para obter o número da conta
+  numeroDaConta: function() {
+    return this.conta;
+  }
+};
+
+// Exemplos de uso
+console.log(Banco.buscarSaldo()); // Retorna o saldo atual
+console.log(Banco.deposito(500)); // Realiza um depósito de R$500
+console.log(Banco.saque(200)); // Realiza um saque de R$200
+console.log(Banco.numeroDaConta()); // Retorna o número da conta
