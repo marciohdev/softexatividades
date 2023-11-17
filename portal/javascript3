@@ -1,0 +1,175 @@
+Objetos Materiais:
+
+Carro:
+
+Atributos:
+modelo
+cor
+ano
+Métodos:
+ligar()
+desligar()
+acelerar()
+
+class Carro {
+    constructor(modelo, cor, ano) {
+        this.modelo = modelo;
+        this.cor = cor;
+        this.ano = ano;
+        this.ligado = false;
+        this.velocidade = 0;
+    }
+
+    ligar() {
+        this.ligado = true;
+        console.log('O carro está ligado.');
+    }
+
+    desligar() {
+        this.ligado = false;
+        this.velocidade = 0;
+        console.log('O carro está desligado.');
+    }
+
+    acelerar() {
+        if (this.ligado) {
+            this.velocidade += 10;
+            console.log(`Acelerando. Velocidade atual: ${this.velocidade} km/h`);
+        } else {
+            console.log('O carro precisa estar ligado para acelerar.');
+        }
+    }
+}
+
+// Exemplo de uso
+const meuCarro = new Carro('Sedan', 'Azul', 2022);
+meuCarro.ligar();
+meuCarro.acelerar();
+meuCarro.desligar();
+Livro:
+Atributos:
+titulo
+autor
+anoPublicacao
+Métodos:
+abrir()
+fechar()
+ler()
+
+
+class Livro {
+    constructor(titulo, autor, anoPublicacao) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anoPublicacao = anoPublicacao;
+        this.aberto = false;
+        this.paginaAtual = 1;
+    }
+
+    abrir() {
+        this.aberto = true;
+        console.log('Livro aberto.');
+    }
+
+    fechar() {
+        this.aberto = false;
+        console.log('Livro fechado.');
+    }
+
+    ler() {
+        if (this.aberto) {
+            console.log(`Lendo página ${this.paginaAtual}...`);
+            this.paginaAtual++;
+        } else {
+            console.log('Abra o livro antes de ler.');
+        }
+    }
+}
+
+const meuLivro = new Livro('JavaScript: The Good Parts', 'Douglas Crockford', 2008);
+meuLivro.abrir();
+meuLivro.ler();
+meuLivro.fechar();
+Objetos Abstratos:
+
+Veículo:
+Atributos:
+tipo
+velocidadeMaxima
+cor
+Métodos:
+acelerar()
+frear()
+obterInformacoes()
+
+class Veiculo {
+    constructor(tipo, velocidadeMaxima, cor) {
+        this.tipo = tipo;
+        this.velocidadeMaxima = velocidadeMaxima;
+        this.cor = cor;
+        this.velocidadeAtual = 0;
+    }
+
+    acelerar() {
+        if (this.velocidadeAtual < this.velocidadeMaxima) {
+            this.velocidadeAtual += 10;
+            console.log(`Acelerando. Velocidade atual: ${this.velocidadeAtual} km/h`);
+        } else {
+            console.log('Velocidade máxima atingida.');
+        }
+    }
+
+    frear() {
+        if (this.velocidadeAtual > 0) {
+            this.velocidadeAtual -= 10;
+            console.log(`Freando. Velocidade atual: ${this.velocidadeAtual} km/h`);
+        } else {
+            console.log('O veículo já está parado.');
+        }
+    }
+
+    obterInformacoes() {
+        console.log(`Tipo: ${this.tipo}, Cor: ${this.cor}, Velocidade Máxima: ${this.velocidadeMaxima} km/h`);
+    }
+}
+
+const minhaMoto = new Veiculo('Moto', 120, 'Vermelha');
+minhaMoto.acelerar();
+minhaMoto.obterInformacoes();
+minhaMoto.frear();
+Documento:
+Atributos:
+titulo
+formato
+tamanho
+Métodos:
+abrir()
+fechar()
+imprimir()
+
+class Documento {
+    constructor(titulo, formato, tamanho) {
+        this.titulo = titulo;
+        this.formato = formato;
+        this.tamanho = tamanho;
+        this.aberto = false;
+    }
+
+    abrir() {
+        this.aberto = true;
+        console.log('Documento aberto.');
+    }
+
+    fechar() {
+        this.aberto = false;
+        console.log('Documento fechado.');
+    }
+
+    imprimir() {
+        if (this.aberto) {
+            console.log(`Imprimindo ${this.titulo} (${this.formato}, ${this.tamanho}).`);
+        } else {
+            console.log('Abra o documento antes de imprimir.');
+        }
+    }
+}
