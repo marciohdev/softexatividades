@@ -1,0 +1,43 @@
+# Interface Galinha
+class Galinha:
+    def cacarejar(self):
+        pass
+
+# Classe concreta de Galinha
+class GalinhaComum(Galinha):
+    def cacarejar(self):
+        return "Cocoricó!"
+
+# Interface Pato
+class Pato:
+    def grasnar(self):
+        pass
+
+# Classe concreta de Pato
+class PatoComum(Pato):
+    def grasnar(self):
+        return "Quack!"
+
+# Adaptador para fazer um Pato parecer uma Galinha
+class AdaptadorPato(Galinha):
+    def __init__(self, pato):
+        self.pato = pato
+
+    def cacarejar(self):
+        return self.pato.grasnar()
+
+# Demonstração do uso do adaptador
+class AdaptadorPatoDemo:
+    @staticmethod
+    def main():
+        # Criando uma instância de Pato
+        pato_comum = PatoComum()
+
+        # Usando o adaptador para fazer o Pato parecer uma Galinha
+        adaptador_pato = AdaptadorPato(pato_comum)
+
+        # Testando o método cacarejar, que agora é um método de Pato parecendo Galinha
+        print("Pato adaptado como Galinha:", adaptador_pato.cacarejar())
+
+# Executando a demonstração
+AdaptadorPatoDemo.main()
