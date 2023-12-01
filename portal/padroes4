@@ -1,0 +1,67 @@
+# Interface para os componentes (sanduíches)
+class Sanduiche:
+    def custo(self):
+        pass
+
+    def descricao(self):
+        pass
+
+# Componente concreto: SanduícheBase
+class SanduicheBase(Sanduiche):
+    def custo(self):
+        return 4.50
+
+    def descricao(self):
+        return "Sanduíche de Frango Assado"
+
+# Decorator abstrato
+class Decorator(Sanduiche):
+    def __init__(self, sanduiche):
+        self._sanduiche = sanduiche
+
+    def custo(self):
+        return self._sanduiche.custo()
+
+    def descricao(self):
+        return self._sanduiche.descricao()
+
+# Decorator concreto: Pepperoni
+class Pepperoni(Decorator):
+    def __init__(self, sanduiche):
+        super().__init__(sanduiche)
+
+    def custo(self):
+        return super().custo() + 0.99
+
+    def descricao(self):
+        return super().descricao() + ", Pepperoni"
+
+# Decorator concreto: QueijoMussarelaRalado
+class QueijoMussarelaRalado(Decorator):
+    def __init__(self, sanduiche):
+        super().__init__(sanduiche)
+
+    def custo(self):
+        return super().custo() + 2.00
+
+    def descricao(self):
+        return super().descricao() + ", Queijo Mussarela Ralado"
+
+# Cliente
+class Cliente:
+    @staticmethod
+    def main():
+        # Criando um sanduíche de frango assado
+        sanduiche = SanduicheBase()
+
+        # Adicionando pepperoni ao sanduíche
+        sanduiche_com_pepperoni = Pepperoni(sanduiche)
+
+        # Adicionando queijo mussarela ralado ao sanduíche com pepperoni
+        sanduiche_final = QueijoMussarelaRalado(sanduiche_com_pepperoni)
+
+        # Exibindo o custo e a descrição do sanduíche final
+        print(f"{sanduiche_final.descricao()} custa ${sanduiche_final.custo():.2f}")
+
+# Executando o cliente
+Cliente.main()
