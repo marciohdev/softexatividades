@@ -1,0 +1,49 @@
+class Strategy:
+    def execute(self, num1, num2):
+        pass
+
+# Classes concretas que implementam a Strategy
+class Soma(Strategy):
+    def execute(self, num1, num2):
+        return num1 + num2
+
+class Subtracao(Strategy):
+    def execute(self, num1, num2):
+        return num1 - num2
+
+class Multiplicacao(Strategy):
+    def execute(self, num1, num2):
+        return num1 * num2
+
+# Contexto (Calculadora)
+class Calculadora:
+    def __init__(self, strategy):
+        self._strategy = strategy
+
+    def calcular(self, num1, num2):
+        return self._strategy.execute(num1, num2)
+
+# Cliente
+if __name__ == "__main__":
+    # Recebendo input do usuário
+    num1 = int(input("Digite o primeiro número: "))
+    num2 = int(input("Digite o segundo número: "))
+    operacao = input("Digite a operação (+ para soma, - para subtração, * para multiplicação): ")
+
+    # Definindo qual Strategy será usada com base na operação informada
+    if operacao == '+':
+        strategy = Soma()
+    elif operacao == '-':
+        strategy = Subtracao()
+    elif operacao == '*':
+        strategy = Multiplicacao()
+    else:
+        print("Operação inválida. Por favor, escolha +, - ou *.")
+        exit()
+
+    # Criando a calculadora com a Strategy escolhida
+    calculadora = Calculadora(strategy)
+
+    # Realizando o cálculo e exibindo o resultado
+    resultado = calculadora.calcular(num1, num2)
+    print(f"Resultado: {resultado}")
