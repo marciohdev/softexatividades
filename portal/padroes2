@@ -1,0 +1,62 @@
+from abc import ABC, abstractmethod
+
+# Classe abstrata Veículo
+class Veiculo(ABC):
+    def __init__(self, modelo, marca, cor, numeroRodas):
+        self.modelo = modelo
+        self.marca = marca
+        self.cor = cor
+        self.numeroRodas = numeroRodas
+
+    @abstractmethod
+    def clone(self):
+        pass
+
+    @abstractmethod
+    def represent(self):
+        pass
+
+# Subclasse Carro
+class Carro(Veiculo):
+    def __init__(self, modelo, marca, cor, numeroRodas, numeroPortas):
+        super().__init__(modelo, marca, cor, numeroRodas)
+        self.numeroPortas = numeroPortas
+
+    def clone(self):
+        return Carro(self.modelo, self.marca, self.cor, self.numeroRodas, self.numeroPortas)
+
+    def represent(self):
+        return f"Carro - Modelo: {self.modelo}, Marca: {self.marca}, Cor: {self.cor}, Rodas: {self.numeroRodas}, Portas: {self.numeroPortas}"
+
+# Subclasse Moto
+class Moto(Veiculo):
+    def __init__(self, modelo, marca, cor, numeroRodas, cilindradas):
+        super().__init__(modelo, marca, cor, numeroRodas)
+        self.cilindradas = cilindradas
+
+    def clone(self):
+        return Moto(self.modelo, self.marca, self.cor, self.numeroRodas, self.cilindradas)
+
+    def represent(self):
+        return f"Moto - Modelo: {self.modelo}, Marca: {self.marca}, Cor: {self.cor}, Rodas: {self.numeroRodas}, Cilindradas: {self.cilindradas}"
+
+# Classe Aplicação
+class Aplicacao:
+    def criar_veiculos(self):
+        veiculos = []
+        carro_prototype = Carro("Sedan", "Toyota", "Azul", 4, 4)
+        moto_prototype = Moto("Sport", "Honda", "Vermelha", 2, 600)
+
+        for _ in range(3):
+            veiculo = carro_prototype.clone()
+            veiculos.append(veiculo)
+
+        for _ in range(3):
+            veiculo = moto_prototype.clone()
+            veiculos.append(veiculo)
+
+        return veiculos
+
+    def imprimir_representacao(self, veiculos):
+        for veiculo in veiculos:
+            print(veiculo.represent())
