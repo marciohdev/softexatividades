@@ -1,0 +1,64 @@
+from abc import ABC, abstractmethod
+
+# Interface comum para os produtos
+class Computer(ABC):
+    @abstractmethod
+    def __str__(self):
+        pass
+
+# Produto concreto: PC
+class PC(Computer):
+    def __init__(self, ram, hdd, cpu):
+        self.ram = ram
+        self.hdd = hdd
+        self.cpu = cpu
+        self.type = "PC"
+
+    def __str__(self):
+        return f"PC - RAM: {self.ram}GB, HDD: {self.hdd}GB, CPU: {self.cpu}GHz"
+
+# Produto concreto: Server
+class Server(Computer):
+    def __init__(self, ram, hdd, cpu):
+        self.ram = ram
+        self.hdd = hdd
+        self.cpu = cpu
+        self.type = "Server"
+
+    def __str__(self):
+        return f"Server - RAM: {self.ram}GB, HDD: {self.hdd}GB, CPU: {self.cpu}GHz"
+
+# Fábrica abstrata
+class ComputerFactory(ABC):
+    @abstractmethod
+    def create_computer(self, ram, hdd, cpu):
+        pass
+
+# Fábrica concreta
+class ConcreteComputerFactory(ComputerFactory):
+    def create_computer(self, ram, hdd, cpu, computer_type):
+        if computer_type.lower() == "pc":
+            return PC(ram, hdd, cpu)
+        elif computer_type.lower() == "server":
+            return Server(ram, hdd, cpu)
+        else:
+            raise ValueError("Tipo de computador desconhecido")
+
+# Cliente
+class Client:
+    def __init__(self, factory):
+        self.factory = factory
+
+    def create_computer(self, ram, hdd, cpu, computer_type):
+        computer = self.factory.create_computer(ram, hdd, cpu, computer_type)
+        return computer
+
+# Exemplo de uso
+factory = ConcreteComputerFactory()
+client = Client(factory)
+
+pc = client.create_computer(8, 500, 2.5, "PC")
+server = client.create_computer(32, 1000, 3.0, "Server")
+
+print(pc)
+print(server)
