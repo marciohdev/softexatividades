@@ -1,0 +1,68 @@
+class Observer:
+    def update(self):
+        pass
+
+# Classe Observable
+class Observable:
+    def __init__(self):
+        self._observers = []
+
+    def add_observer(self, observer):
+        self._observers.append(observer)
+
+    def remove_observer(self, observer):
+        self._observers.remove(observer)
+
+    def notify_observers(self):
+        for observer in self._observers:
+            observer.update()
+
+# Classe Editor (Subject)
+class Editor(Observable):
+    def __init__(self):
+        super().__init__()
+        self._content = ""
+
+    def get_content(self):
+        return self._content
+
+    def set_content(self, content):
+        self._content = content
+        self.notify_observers()
+
+# Subclasse da classe Editor
+class TextEditor(Editor):
+    def insert_line(self, line_number, text):
+        lines = self.get_content().split('\n')
+        lines.insert(line_number, text)
+        self.set_content('\n'.join(lines))
+
+    def remove_line(self, line_number):
+        lines = self.get_content().split('\n')
+        del lines[line_number]
+        self.set_content('\n'.join(lines))
+
+# Classe ConcreteObserver
+class TextObserver(Observer):
+    def __init__(self, editor):
+        self._editor = editor
+        self._editor.add_observer(self)
+
+    def update(self):
+        print("Conteúdo do Editor Atualizado:")
+        print(self._editor.get_content())
+
+# Exemplo de uso
+if __name__ == "__main__":
+    # Instanciando um TextEditor
+    text_editor = TextEditor()
+
+    # Criando um observador para o TextEditor
+    text_observer = TextObserver(text_editor)
+
+    # Inserindo linhas no TextEditor
+    text_editor.insert_line(0, "Primeira Linha")
+    text_editor.insert_line(1, "Segunda Linha")
+
+    # Removendo uma linha do TextEditor
+    text_editor.remove_line(0)
