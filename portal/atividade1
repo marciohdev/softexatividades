@@ -1,0 +1,37 @@
+Modelo Entidade-Relacionamento (MER):
+Entidades:
+
+Livro (ID_Livro, Titulo, Autor, AnoPublicacao, ...)
+Autor (ID_Autor, Nome, DataNascimento, ...)
+Usuário (ID_Usuario, Nome, Email, ...)
+Empréstimo (ID_Emprestimo, DataEmprestimo, DataDevolucaoPrevista, ...)
+Devolução (ID_Devolucao, DataDevolucao, ...)
+Relacionamentos:
+
+"Livro é escrito por Autor" (Relacionamento entre Livro e Autor)
+"Usuário faz Empréstimo" (Relacionamento entre Usuário e Empréstimo)
+"Empréstimo tem Livro" (Relacionamento entre Empréstimo e Livro)
+"Devolução relaciona-se com Empréstimo" (Relacionamento entre Devolução e Empréstimo)
+Modelo Lógico:
+Atributos e Tipos de Dados:
+
+Livro (ID_Livro INT (PK), Titulo VARCHAR(255), Autor VARCHAR(255), AnoPublicacao INT, ...)
+Autor (ID_Autor INT (PK), Nome VARCHAR(255), DataNascimento DATE, ...)
+Usuário (ID_Usuario INT (PK), Nome VARCHAR(255), Email VARCHAR(255), ...)
+Empréstimo (ID_Emprestimo INT (PK), DataEmprestimo DATE, DataDevolucaoPrevista DATE, ID_Usuario INT (FK), ...)
+Devolução (ID_Devolucao INT (PK), DataDevolucao DATE, ID_Emprestimo INT (FK), ...)
+Chaves Primárias e Estrangeiras:
+
+Chave Primária (PK) indicada pela notação (PK).
+
+Chave Estrangeira (FK) indicada pela notação (FK).
+
+Livro (ID_Livro é PK)
+
+Autor (ID_Autor é PK)
+
+Usuário (ID_Usuario é PK)
+
+Empréstimo (ID_Emprestimo é PK, ID_Usuario é FK referenciando Usuário)
+
+Devolução (ID_Devolucao é PK, ID_Emprestimo é FK referenciando Empréstimo)
